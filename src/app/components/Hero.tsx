@@ -58,9 +58,14 @@ const Hero = () => {
           <div className="relative">
             <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-violet-500/30 shadow-2xl">
               <img
-                src="/pfp.jpg"
+                src="/pfp-light.jpg"
                 alt={personalInfo.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover dark:hidden"
+              />
+              <img
+                src="/pfp-dark.jpg"
+                alt={personalInfo.name}
+                className="w-full h-full object-cover hidden dark:block"
               />
             </div>
             <motion.div

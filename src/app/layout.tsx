@@ -35,7 +35,7 @@ export const metadata = {
     siteName: "Kurt Russel De Asis Portfolio",
     images: [
       {
-        url: "/pfp.jpg",
+        url: "/pfp-dark.jpg",
         width: 1200,
         height: 630,
         alt: "Kurt Russel De Asis Portfolio",
@@ -47,7 +47,7 @@ export const metadata = {
     title: "Kurt Russel De Asis | Full-Stack Developer & Virtual Assistant",
     description:
       "Full-Stack Developer and Virtual Assistant based in Santa Rosa, Laguna, Philippines.",
-    images: ["/pfp.jpg"],
+    images: ["/pfp-dark.jpg"],
   },
   robots: {
     index: true,

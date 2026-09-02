@@ -150,7 +150,8 @@ const Chatbot = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <img src="/pfp.jpg" alt={personalInfo.name} className="w-full h-full object-cover" />
+        <img src="/pfp-light.jpg" alt={personalInfo.name} className="w-full h-full object-cover dark:hidden" />
+        <img src="/pfp-dark.jpg" alt="" className="w-full h-full object-cover hidden dark:block" />
         <span className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-violet-600" />
       </motion.button>
 
@@ -172,8 +173,9 @@ const Chatbot = () => {
             {/* Chat Header */}
             <div className="flex items-center justify-between p-4 bg-gradient-to-r from-violet-600 to-violet-500">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-white/30">
-                  <img src="/pfp.jpg" alt={personalInfo.name} className="w-full h-full object-cover" />
+<div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-white/30">
+                  <img src="/pfp-light.jpg" alt={personalInfo.name} className="w-full h-full object-cover dark:hidden" />
+                  <img src="/pfp-dark.jpg" alt="" className="w-full h-full object-cover hidden dark:block" />
                 </div>
                 <div>
                   <h3 className="text-white font-semibold">{personalInfo.name}</h3>
@@ -213,7 +215,8 @@ const Chatbot = () => {
                     >
                       {message.role === "assistant" && (
                         <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden border border-violet-500/30">
-                          <img src="/pfp.jpg" alt="AI" className="w-full h-full object-cover" />
+                          <img src="/pfp-light.jpg" alt="AI" className="w-full h-full object-cover dark:hidden" />
+                          <img src="/pfp-dark.jpg" alt="" className="w-full h-full object-cover hidden dark:block" />
                         </div>
                       )}
                       <div
@@ -242,8 +245,9 @@ const Chatbot = () => {
                       animate={{ opacity: 1 }}
                       className="flex gap-3"
                     >
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-violet-500/30">
-                        <img src="/pfp.jpg" alt={personalInfo.name} className="w-full h-full object-cover" />
+<div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-violet-500/30">
+                        <img src="/pfp-light.jpg" alt={personalInfo.name} className="w-full h-full object-cover dark:hidden" />
+                        <img src="/pfp-dark.jpg" alt="" className="w-full h-full object-cover hidden dark:block" />
                       </div>
                       <div className="bg-card border border-card-border p-3 rounded-2xl rounded-bl-md">
                         <Loader2 className="w-4 h-4 text-violet-400 animate-spin" />
