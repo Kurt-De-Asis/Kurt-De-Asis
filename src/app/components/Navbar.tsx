@@ -47,7 +47,8 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <motion.a
-              href="#"
+              href="#home"
+              aria-label="Back to top"
               className="text-2xl font-bold bg-gradient-to-r from-violet-400 via-violet-500 to-violet-300 dark:from-violet-400 dark:via-violet-500 dark:to-violet-300 from-violet-700 via-violet-600 to-violet-500 bg-clip-text text-transparent"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

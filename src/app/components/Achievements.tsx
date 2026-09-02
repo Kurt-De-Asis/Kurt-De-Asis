@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Star, Medal, Trophy, Users, Calendar } from "lucide-react";
+import { Award, Star, Medal, Users, Calendar } from "lucide-react";
 import { achievements } from "@/constants/data";
 
 const Achievements = () => {
@@ -75,7 +75,7 @@ const Achievements = () => {
             className="text-xl text-foreground/70 max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Recognition for academic excellence, leadership, and outstanding contributions to the tech community.
+            Recognition for academic excellence, leadership, and outstanding contributions throughout my studies.
           </motion.p>
         </motion.div>
 
@@ -87,7 +87,7 @@ const Achievements = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {achievements.map((achievement, index) => (
+          {achievements.map((achievement) => (
             <motion.div
               key={achievement.id}
               className={`group bg-black/40 p-6 rounded-xl border ${getAchievementBg(achievement.category)} hover:border-violet-600/50 transition-all duration-300`}
@@ -120,18 +120,11 @@ const Achievements = () => {
                 {achievement.description}
               </p>
 
-              {/* Achievement Details */}
-              <div className="mt-4 flex items-center justify-between pt-4 border-t border-violet-800/30">
-                <div className="flex space-x-2">
-                  <span className="px-3 py-1 bg-violet-600/20 text-violet-400 text-xs rounded-full border border-violet-600/30">
-                    Excellence
-                  </span>
-                  <span className="px-3 py-1 bg-violet-600/20 text-violet-400 text-xs rounded-full border border-violet-600/30">
-                    Leadership
-                  </span>
-                </div>
-                
-                <div className="w-2 h-2 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Achievement Category Tag */}
+              <div className="mt-4 pt-4 border-t border-violet-800/30">
+                <span className="px-3 py-1 bg-violet-600/20 text-violet-400 text-xs rounded-full border border-violet-600/30">
+                  {achievement.category}
+                </span>
               </div>
             </motion.div>
           ))}

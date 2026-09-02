@@ -2,8 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2, Loader2 } from "lucide-react";
-import { personalInfo, skills, projects, education } from "@/constants/data";
+import { X, Send, User, Minimize2, Maximize2, Loader2 } from "lucide-react";
+import { personalInfo, softwareSkills, projects, education } from "@/constants/data";
 
 interface Message {
   id: string;
@@ -24,12 +24,12 @@ const generateResponse = (question: string): string => {
   
   // About the person
   if (lowerQuestion.includes("who") && lowerQuestion.includes("you") || lowerQuestion.includes("about")) {
-    return `Hi! I'm ${personalInfo.name}, a passionate Software Engineer based in Santa Rosa, Laguna, Philippines. I specialize in building scalable applications and love creating efficient solutions using modern technologies like Go, Python, React, and more. I'm currently pursuing my BS in Information Technology and I'm always eager to learn and take on new challenges!`;
+    return `Hi! I'm ${personalInfo.name}, a Full-Stack Developer and Virtual Assistant based in Santa Rosa, Laguna, Philippines. I build reliable web and software applications using modern technologies like Go, Python, React, and more — and I also provide remote executive support and virtual assistance. I'm a graduate of BS in Information Technology and always eager to take on new challenges!`;
   }
   
   // Skills
   if (lowerQuestion.includes("skill") || lowerQuestion.includes("tech") || lowerQuestion.includes("expertise")) {
-    const skillCategories = skills.reduce((acc, skill) => {
+    const skillCategories = softwareSkills.reduce((acc, skill) => {
       if (!acc[skill.category]) acc[skill.category] = [];
       acc[skill.category].push(skill.name);
       return acc;
@@ -55,7 +55,12 @@ const generateResponse = (question: string): string => {
   // Education
   if (lowerQuestion.includes("education") || lowerQuestion.includes("degree") || lowerQuestion.includes("school")) {
     const edu = education[0];
-    return `I'm currently studying at ${edu.institution} pursuing a ${edu.degree}. I'm expected to graduate in ${edu.endDate}. I've maintained excellent academic standing with notable achievements.`;
+    return `I hold a ${edu.degree} from ${edu.institution}. I graduated in ${edu.endDate} with strong academic standing and several achievements, including Best Programmer and Best in Capstone and Project Research.`;
+  }
+
+  // Virtual assistance
+  if (lowerQuestion.includes("virtual") || lowerQuestion.includes("assistant") || lowerQuestion.includes("admin") || lowerQuestion.includes("executive")) {
+    return "I also work as a Virtual Assistant / Executive Support Specialist. I help with email and calendar management, meeting scheduling, lead generation, data entry, online research, CRM organization, documentation, and general administrative support. I'm fully set up for remote work across multiple time zones.";
   }
   
   // Contact
@@ -70,7 +75,7 @@ const generateResponse = (question: string): string => {
   
   // Experience
   if (lowerQuestion.includes("experience") || lowerQuestion.includes("years")) {
-    return "I have 4+ years of experience in software development. I've worked on various projects ranging from full-stack web applications to desktop applications. My focus is on building efficient, scalable, and user-friendly solutions.";
+    return "I have 3+ years of experience in software development, plus experience in virtual assistance and executive support. I've worked on web applications, full-stack systems, and desktop applications — focused on building efficient, scalable, and user-friendly solutions.";
   }
   
   // Default response
@@ -106,7 +111,7 @@ const Chatbot = () => {
     if (!content.trim()) return;
 
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       role: "user",
       content: content.trim(),
       timestamp: new Date()
@@ -120,7 +125,7 @@ const Chatbot = () => {
     setTimeout(() => {
       const response = generateResponse(content);
       const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: crypto.randomUUID(),
         role: "assistant",
         content: response,
         timestamp: new Date()

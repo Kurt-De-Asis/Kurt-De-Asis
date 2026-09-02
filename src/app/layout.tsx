@@ -5,13 +5,21 @@ import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import Chatbot from "./components/Chatbot";
 
+const siteUrl = "https://kurtdeasis.dev";
+
 export const metadata = {
-  title: "Kurt Russel De Asis | Software Developer",
-  description: "Professional portfolio of Kurt Russel De Asis - Software Developer specializing in Go, Python, and modern web technologies.",
-  keywords: "Kurt Russel De Asis, Software Developer, Go Developer, Python Developer, Full Stack Developer, Portfolio",
+  metadataBase: new URL(siteUrl),
+  title: "Kurt Russel De Asis | Full-Stack Developer & Virtual Assistant",
+  description:
+    "Kurt Russel De Asis — Full-Stack Developer and Virtual Assistant / Executive Support Specialist based in Santa Rosa, Laguna, Philippines. I build reliable web applications (Go, Python, React, Next.js) and provide remote executive support.",
+  keywords:
+    "Kurt Russel De Asis, Full-Stack Developer, Software Developer, Virtual Assistant, Executive Support, Executive Assistant, Go Developer, Python Developer, React Developer, Next.js Developer, Remote Work, Freelance, Santa Rosa Laguna, Philippines",
   authors: [{ name: "Kurt Russel De Asis" }],
   creator: "Kurt Russel De Asis",
   publisher: "Kurt Russel De Asis",
+  alternates: {
+    canonical: siteUrl,
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -20,9 +28,10 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kurtdeasis.dev",
-    title: "Kurt Russel De Asis | Software Developer",
-    description: "Professional portfolio of Kurt Russel De Asis - Software Developer specializing in Go, Python, and modern web technologies.",
+    url: siteUrl,
+    title: "Kurt Russel De Asis | Full-Stack Developer & Virtual Assistant",
+    description:
+      "Full-Stack Developer and Virtual Assistant based in Santa Rosa, Laguna, Philippines. Building reliable web applications and providing remote executive support.",
     siteName: "Kurt Russel De Asis Portfolio",
     images: [
       {
@@ -35,10 +44,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kurt Russel De Asis | Software Developer",
-    description: "Professional portfolio of Kurt Russel De Asis - Software Developer specializing in Go, Python, and modern web technologies.",
-    images: ["/og-image.jpg"],
-    creator: "@kurtdeasis",
+    title: "Kurt Russel De Asis | Full-Stack Developer & Virtual Assistant",
+    description:
+      "Full-Stack Developer and Virtual Assistant based in Santa Rosa, Laguna, Philippines.",
+    images: ["/pfp.jpg"],
   },
   robots: {
     index: true,
@@ -51,11 +60,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
   category: "technology",
 };
 
@@ -64,9 +68,47 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Kurt Russel De Asis",
+    url: siteUrl,
+    jobTitle: "Full-Stack Developer & Virtual Assistant",
+    email: "mailto:kurtrussel644@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Santa Rosa",
+      addressRegion: "Laguna",
+      addressCountry: "PH",
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Bachelor of Science in Information Technology",
+    },
+    sameAs: [
+      "https://github.com/Kurt-De-Asis",
+      "https://www.linkedin.com/in/de-asis-kurt-russel-dizon-258790343",
+    ],
+    knowsAbout: [
+      "Full-Stack Web Development",
+      "Go",
+      "Python",
+      "React",
+      "Next.js",
+      "Virtual Assistance",
+      "Executive Support",
+      "Email and Calendar Management",
+      "Lead Generation",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="relative min-h-screen">
             <ScrollProgress />

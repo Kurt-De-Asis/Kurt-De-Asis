@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, Award, Users, BookOpen } from "lucide-react";
-import { education } from "@/constants/data";
+import { GraduationCap, Calendar, Award } from "lucide-react";
+import { education, achievements } from "@/constants/data";
 
 const Education = () => {
   const containerVariants = {
@@ -63,17 +63,17 @@ const Education = () => {
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-violet-800/30" />
 
-          {education.map((edu, index) => (
+          {education.map((edu) => (
             <motion.div
               key={edu.id}
-              className={`relative mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              className="relative mb-12 pl-20"
               variants={itemVariants}
             >
               {/* Timeline Dot */}
               <div className="absolute left-6 w-4 h-4 bg-violet-500 rounded-full border-4 border-background z-10" />
 
               {/* Content Card */}
-              <div className={`md:w-5/6 ${index % 2 === 0 ? 'md:ml-16' : 'md:mr-16'}`}>
+              <div>
                 <div className="bg-black/40 p-6 rounded-xl border border-violet-800/30 hover:border-violet-600/50 transition-all duration-300">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center space-x-4">
@@ -84,9 +84,14 @@ const Education = () => {
                         <h3 className="text-xl font-bold text-foreground">{edu.degree}</h3>
                         <p className="text-foreground/70">{edu.institution}</p>
                         <p className="text-foreground/60 text-sm">{edu.location}</p>
+                        {edu.status && (
+                          <span className="inline-block mt-2 px-3 py-1 text-xs rounded-full bg-violet-600/20 text-violet-300 border border-violet-600/30">
+                            {edu.status}
+                          </span>
+                        )}
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right ml-6 flex-shrink-0">
                       <div className="flex items-center space-x-2 text-foreground/70">
                         <Calendar className="w-4 h-4" />
                         <span className="text-sm">{edu.startDate} - {edu.endDate}</span>
@@ -130,23 +135,27 @@ const Education = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div variants={itemVariants} className="bg-black/40 p-6 rounded-xl border border-violet-800/30">
-            <div className="text-3xl font-bold text-violet-400 mb-2">1</div>
-            <div className="text-foreground/70">Degree Completed</div>
-          </motion.div>
-          
-          <motion.div variants={itemVariants} className="bg-black/40 p-6 rounded-xl border border-violet-800/30">
-            <div className="text-3xl font-bold text-violet-400 mb-2">4+ Years</div>
-            <div className="text-foreground/70">Academic Journey</div>
+            <div className="text-3xl font-bold text-violet-400 mb-2">{education.length}</div>
+            <div className="text-foreground/70">Education Complete</div>
           </motion.div>
           
           <motion.div variants={itemVariants} className="bg-black/40 p-6 rounded-xl border border-violet-800/30">
             <div className="text-3xl font-bold text-violet-400 mb-2">1.50</div>
-            <div className="text-foreground/70">Minimum Average</div>
+            <div className="text-foreground/70">Minimum Average (IT)</div>
           </motion.div>
           
           <motion.div variants={itemVariants} className="bg-black/40 p-6 rounded-xl border border-violet-800/30">
-            <div className="text-3xl font-bold text-violet-400 mb-2">Multiple</div>
-            <div className="text-foreground/70">Honors & Awards</div>
+            <div className="text-3xl font-bold text-violet-400 mb-2">
+              {education.reduce((acc, edu) => acc + (edu.achievements?.length ?? 0), 0)}
+            </div>
+            <div className="text-foreground/70">Academic Awards</div>
+          </motion.div>
+          
+          <motion.div variants={itemVariants} className="bg-black/40 p-6 rounded-xl border border-violet-800/30">
+            <div className="text-3xl font-bold text-violet-400 mb-2">
+              {achievements.length}
+            </div>
+            <div className="text-foreground/70">All Achievements</div>
           </motion.div>
         </motion.div>
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Database, Cpu, Shield } from "lucide-react";
-import { professionalSummary } from "@/constants/data";
+import { Code, Database, Briefcase, Globe } from "lucide-react";
+import { professionalSummary, personalInfo } from "@/constants/data";
 
 const About = () => {
   const containerVariants = {
@@ -10,7 +10,7 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.25
       }
     }
   };
@@ -27,27 +27,34 @@ const About = () => {
     }
   };
 
-  const skills = [
+  const highlights = [
     {
       icon: Code,
-      title: "Backend Development",
-      description: "Expert in Go, Python, and Java with experience in building scalable APIs and microservices."
+      title: "Software Development",
+      description: "3+ years building web and software applications — from frontend interfaces and backend APIs to databases and deployment."
+    },
+    {
+      icon: Briefcase,
+      title: "Executive Support",
+      description: "Remote virtual assistance and executive support — email, calendar, scheduling, research, and organized workflow management."
     },
     {
       icon: Database,
-      title: "Database Management",
-      description: "Proficient in MySQL and Firebase with strong database design and optimization skills."
+      title: "Data & Organization",
+      description: "Clean database design and structured data management that keeps systems and records accurate and reliable."
     },
     {
-      icon: Cpu,
-      title: "System Optimization",
-      description: "Skilled in performance tuning and system architecture for efficient, high-performance applications."
-    },
-    {
-      icon: Shield,
-      title: "Security Focus",
-      description: "Committed to secure coding practices and implementing robust authentication systems."
+      icon: Globe,
+      title: "Remote-Ready",
+      description: "Comfortable collaborating across time zones with a dedicated workspace and reliable setup for remote work."
     }
+  ];
+
+  const stats = [
+    { value: "3+", label: "Years Developing" },
+    { value: "15+", label: "Projects Delivered" },
+    { value: "2", label: "Practice Areas" },
+    { value: "4", label: "Workplace Roles" }
   ];
 
   return (
@@ -76,58 +83,62 @@ const About = () => {
             </div>
 
             <motion.p
-              className="text-lg text-foreground/80 leading-relaxed"
+              className="text-lg text-foreground/80 leading-relaxed whitespace-pre-line"
               variants={itemVariants}
             >
               {professionalSummary}
             </motion.p>
 
             <motion.div
-              className="grid grid-cols-2 gap-4 mt-8"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8"
               variants={containerVariants}
             >
-              <motion.div
-                className="bg-black/40 p-6 rounded-xl border border-violet-800/30"
-                variants={itemVariants}
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  className="bg-black/40 p-5 rounded-xl border border-violet-800/30"
+                  variants={itemVariants}
+                >
+                  <p className="text-2xl font-bold text-violet-400">{stat.value}</p>
+                  <p className="text-foreground/70 text-sm">{stat.label}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 mt-8"
+              variants={itemVariants}
+            >
+              <motion.button
+                onClick={() => window.location.href = '#services'}
+                className="flex-1 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
               >
-                <h3 className="font-semibold text-violet-400 mb-2">Experience</h3>
-                <p className="text-foreground/70 text-sm">4+ years of software development experience</p>
-              </motion.div>
-              <motion.div
-                className="bg-black/40 p-6 rounded-xl border border-violet-800/30"
-                variants={itemVariants}
+                My Services
+              </motion.button>
+              <motion.button
+                onClick={() => window.location.href = '#contact'}
+                className="flex-1 px-6 py-3 border-2 border-violet-600 hover:border-violet-400 hover:bg-violet-600/20 text-violet-400 font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
               >
-                <h3 className="font-semibold text-violet-400 mb-2">Education</h3>
-                <p className="text-foreground/70 text-sm">BS in Information Technology</p>
-              </motion.div>
-              <motion.div
-                className="bg-black/40 p-6 rounded-xl border border-violet-800/30"
-                variants={itemVariants}
-              >
-                <h3 className="font-semibold text-violet-400 mb-2">Location</h3>
-                <p className="text-foreground/70 text-sm">Santa Rosa, Laguna, Philippines</p>
-              </motion.div>
-              <motion.div
-                className="bg-black/40 p-6 rounded-xl border border-violet-800/30"
-                variants={itemVariants}
-              >
-                <h3 className="font-semibold text-violet-400 mb-2">Availability</h3>
-                <p className="text-foreground/70 text-sm">Open to new opportunities</p>
-              </motion.div>
+                Get In Touch
+              </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Skills Overview */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-violet-400">Core Competencies</h3>
+          {/* Right Column - Highlights */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="space-y-2">
+              <h3 className="text-2xl font-bold text-violet-400">What I Bring</h3>
               <p className="text-foreground/70">
-                Here are some of the key areas I specialize in:
+                A blend of technical development and professional administrative support.
               </p>
             </div>
 
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
+            <div className="space-y-5">
+              {highlights.map((item, index) => (
                 <motion.div
                   key={index}
                   className="group bg-black/40 p-6 rounded-xl border border-violet-800/30 hover:border-violet-600/50 transition-all duration-300"
@@ -136,14 +147,14 @@ const About = () => {
                 >
                   <div className="flex items-start space-x-4">
                     <div className="p-3 bg-violet-600/20 rounded-lg group-hover:bg-violet-600/40 transition-colors">
-                      <skill.icon className="w-8 h-8 text-violet-400" />
+                      <item.icon className="w-7 h-7 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-foreground mb-2">
-                        {skill.title}
+                      <h4 className="text-lg font-semibold text-foreground mb-1">
+                        {item.title}
                       </h4>
                       <p className="text-foreground/70 leading-relaxed">
-                        {skill.description}
+                        {item.description}
                       </p>
                     </div>
                   </div>
@@ -151,28 +162,9 @@ const About = () => {
               ))}
             </div>
 
-            {/* Call to Action */}
-            <motion.div
-              className="mt-8 flex flex-col sm:flex-row gap-4"
-              variants={itemVariants}
-            >
-              <motion.button
-                onClick={() => window.location.href = '#projects'}
-                className="flex-1 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View My Work
-              </motion.button>
-              <motion.button
-                onClick={() => window.location.href = '#contact'}
-                className="flex-1 px-6 py-3 border-2 border-violet-600 hover:border-violet-400 hover:bg-violet-600/20 text-violet-400 font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get In Touch
-              </motion.button>
-            </motion.div>
+            <p className="text-sm text-foreground/60">
+              Based in {personalInfo.location}. Available for freelance, contract, and full-time opportunities.
+            </p>
           </motion.div>
         </motion.div>
       </div>
