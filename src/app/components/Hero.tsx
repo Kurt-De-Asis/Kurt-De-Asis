@@ -120,7 +120,7 @@ const Hero = () => {
 
           <motion.button
             onClick={() => scrollToSection('contact')}
-            className="px-8 py-4 bg-violet-600/15 border border-violet-600/50 text-violet-300 font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto"
+            className="px-8 py-4 bg-violet-600/15 border border-violet-600 text-violet-700 dark:text-violet-300 font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-violet-600/25 w-full sm:w-auto"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
