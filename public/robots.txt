@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://kurtdeasis.dev/sitemap.xml
+Sitemap: https://kurt-de-asis.vercel.app/sitemap.xml

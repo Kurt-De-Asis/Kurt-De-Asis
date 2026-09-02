@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import Chatbot from "./components/Chatbot";
 
-const siteUrl = "https://kurtdeasis.dev";
+const siteUrl = "https://kurt-de-asis.vercel.app";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
